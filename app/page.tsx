@@ -155,7 +155,9 @@ export default function Home() {
               </Link>
             </Button>
             <Button variant='outline' size='lg' asChild>
-              <Link href='/docs'>Read Documentation</Link>
+              <Link href='https://github.com/GuilhermeVozniak/base-next-app/tree/main/docs'>
+                Read Documentation
+              </Link>
             </Button>
           </div>
           <p className='mt-4 text-sm text-gray-500 dark:text-gray-400'>

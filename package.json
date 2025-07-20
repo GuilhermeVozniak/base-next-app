@@ -1,5 +1,5 @@
 {
-  "name": "peer-chat",
+  "name": "base-next-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,7 +13,10 @@
     "type-check": "tsc --noEmit",
     "code-quality": "npm run lint && npm run format:check && npm run type-check",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "setup": "pnpm install && cp .env.example .env.local",
+    "clean": "rm -rf .next node_modules .turbo && pnpm install",
+    "ui:add": "pnpm dlx shadcn@latest add"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

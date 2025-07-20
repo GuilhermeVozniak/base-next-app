@@ -1,6 +1,6 @@
 # Shadcn/ui Component Library
 
-This document covers the setup and usage of Shadcn/ui components in the peer-chat project.
+This document covers the setup and usage of Shadcn/ui components in the Next.js project.
 
 ## What is Shadcn/ui?
 
@@ -131,35 +131,38 @@ pnpm dlx shadcn@latest add avatar
 pnpm dlx shadcn@latest add calendar
 ```
 
-## WebRTC-Specific Component Suggestions
+## Recommended Component Suggestions
 
-For the peer-chat WebRTC project, consider adding these components:
+For most Next.js projects, consider adding these commonly used components:
 
-### Essential Components for Chat Interface
+### Essential UI Components
 ```bash
-# Basic UI elements
+# Basic interactive elements
 pnpm dlx shadcn@latest add button input card
 
-# Chat-specific components
+# User interface essentials
 pnpm dlx shadcn@latest add avatar badge scroll-area
 
 # Dialogs and overlays
 pnpm dlx shadcn@latest add dialog sheet toast
 
-# Form components for user input
-pnpm dlx shadcn@latest add form label textarea
+# Form components
+pnpm dlx shadcn@latest add form label textarea checkbox
 ```
 
-### Video/Audio Call Interface
+### Advanced Components
 ```bash
-# Controls and feedback
-pnpm dlx shadcn@latest add button toggle switch
-pnpm dlx shadcn@latest add slider progress
-pnpm dlx shadcn@latest add tooltip popover
+# Data display and interaction
+pnpm dlx shadcn@latest add table select dropdown-menu
+pnpm dlx shadcn@latest add calendar date-picker
 
-# Layout components
-pnpm dlx shadcn@latest add separator tabs
-pnpm dlx shadcn@latest add aspect-ratio
+# Layout and navigation
+pnpm dlx shadcn@latest add separator tabs navigation-menu
+pnpm dlx shadcn@latest add aspect-ratio accordion
+
+# Feedback and controls
+pnpm dlx shadcn@latest add progress slider toggle switch
+pnpm dlx shadcn@latest add tooltip popover alert
 ```
 
 ## Customization
@@ -230,26 +233,26 @@ const buttonVariants = cva(
 ```
 components/
 ├── ui/           # Shadcn/ui components
-├── webrtc/       # Custom WebRTC components
-├── chat/         # Chat-specific components
-└── layout/       # Layout components
+├── forms/        # Custom form components
+├── layout/       # Layout components
+└── features/     # Feature-specific components
 ```
 
 ### 2. Import Patterns
 ```tsx
 // Use absolute imports with @ alias
 import { Button } from '@/components/ui/button'
-import { ChatMessage } from '@/components/chat/chat-message'
+import { UserProfile } from '@/components/features/user-profile'
 ```
 
 ### 3. Composition over Customization
 ```tsx
 // Good: Compose components
-function ChatInput() {
+function MessageInput() {
   return (
     <div className="flex gap-2">
-      <Input placeholder="Type a message..." />
-      <Button>Send</Button>
+      <Input placeholder="Enter your message..." />
+      <Button>Submit</Button>
     </div>
   )
 }
@@ -276,53 +279,56 @@ Shadcn/ui components are built with accessibility in mind, but always test:
 ```tsx
 // Use semantic HTML and ARIA labels
 <Button 
-  aria-label="Start video call"
-  disabled={!isConnected}
+  aria-label="Save changes"
+  disabled={!isValid}
 >
-  <VideoIcon />
+  <SaveIcon />
 </Button>
 ```
 
-## Integration with WebRTC Project
+## Practical Integration Examples
 
-### Example: Video Call Controls
+### Example: User Dashboard Card
 
 ```tsx
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
-function VideoCallControls({ isConnected, isMuted, isVideoOff }) {
+function UserDashboard({ user, isOnline, notifications }) {
   return (
     <Card className="p-4">
-      <div className="flex items-center gap-2 mb-4">
-        <Badge variant={isConnected ? "default" : "destructive"}>
-          {isConnected ? "Connected" : "Disconnected"}
-        </Badge>
-      </div>
+      <CardHeader>
+        <div className="flex items-center gap-3">
+          <Avatar>
+            <AvatarImage src={user.avatar} />
+            <AvatarFallback>{user.initials}</AvatarFallback>
+          </Avatar>
+          <div>
+            <CardTitle>{user.name}</CardTitle>
+            <Badge variant={isOnline ? "default" : "secondary"}>
+              {isOnline ? "Online" : "Offline"}
+            </Badge>
+          </div>
+        </div>
+      </CardHeader>
       
-      <div className="flex gap-2">
-        <Button 
-          variant={isMuted ? "destructive" : "default"}
-          onClick={toggleMute}
-        >
-          {isMuted ? "Unmute" : "Mute"}
-        </Button>
-        
-        <Button 
-          variant={isVideoOff ? "destructive" : "default"}
-          onClick={toggleVideo}
-        >
-          {isVideoOff ? "Turn On Video" : "Turn Off Video"}
-        </Button>
-        
-        <Button 
-          variant="destructive" 
-          onClick={endCall}
-        >
-          End Call
-        </Button>
-      </div>
+      <CardContent>
+        <div className="flex gap-2">
+          <Button variant="default">
+            View Profile
+          </Button>
+          <Button variant="outline">
+            Settings
+          </Button>
+          {notifications > 0 && (
+            <Button variant="secondary">
+              Notifications ({notifications})
+            </Button>
+          )}
+        </div>
+      </CardContent>
     </Card>
   )
 }

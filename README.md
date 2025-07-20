@@ -1,14 +1,12 @@
-# Peer Chat
+# Base Next.js Setup
 
-🚀 A modern WebRTC learning project - Build real-time peer-to-peer communication from scratch using cutting-edge web technologies.
+🚀 A modern, production-ready Next.js starter template with comprehensive code quality tools and best practices built-in.
 
 ## Overview
 
-Dive deep into the world of real-time web communication! This hands-on project explores WebRTC (Web Real-Time Communication) technology, teaching you to build lightning-fast peer-to-peer applications. Create seamless text chat, crystal-clear audio/video calls, and powerful screen sharing - all running directly between browsers with zero external media servers.
+Get up and running quickly with a carefully crafted Next.js foundation! This template provides everything you need to start building modern web applications with confidence. Includes TypeScript, Tailwind CSS, a beautiful component library, and a complete code quality toolkit to maintain clean, consistent code.
 
-**Learning Focus**: Understanding WebRTC fundamentals, signaling protocols, peer-to-peer networking, and real-time communication patterns.
-
-> 🎥 **Inspired by**: [WebRTC Tutorial Video](https://www.youtube.com/watch?v=QsH8FL0952k) - Following modern WebRTC implementation patterns and best practices.
+**Focus**: Developer experience, code quality, and modern web development best practices.
 
 ## Tech Stack
 
@@ -17,8 +15,7 @@ Dive deep into the world of real-time web communication! This hands-on project e
 - **Styling**: Tailwind CSS v4
 - **Components**: Shadcn/ui + Radix UI
 - **Code Quality**: ESLint + Prettier + Husky
-- **WebRTC**: Native browser APIs
-- **Signaling**: WebSocket (to be implemented)
+- **Package Manager**: pnpm (recommended)
 
 ## Quick Start
 
@@ -31,8 +28,8 @@ Dive deep into the world of real-time web communication! This hands-on project e
 
 ```bash
 # Clone the repository
-git clone https://github.com/GuilhermeVozniak/peer-chat.git
-cd peer-chat
+git clone https://github.com/GuilhermeVozniak/base-next-app.git
+cd base-next-app
 
 # Install dependencies
 pnpm install
@@ -64,33 +61,59 @@ pnpm dlx shadcn@latest add card      # Add card component
 pnpm dlx shadcn@latest add dialog    # Add dialog component
 ```
 
-## Project Status
+## Features
 
-🚧 **In Development** - This is a learning project focused on WebRTC implementation.
+### ✅ Ready to Use
 
-### Current Features
+- **Modern Next.js**: Latest Next.js 15 with React 19
+- **TypeScript**: Full type safety out of the box
+- **Tailwind CSS**: Utility-first styling with v4
+- **Component Library**: Beautiful, accessible components with Shadcn/ui
+- **Code Quality**: ESLint, Prettier, Husky pre-configured
+- **Git Hooks**: Automated code quality checks on commit/push
+- **VS Code Setup**: Optimized editor configuration included
 
-- ✅ Next.js setup with TypeScript
-- ✅ Tailwind CSS styling
-- ✅ Comprehensive code quality tools
-- ⏳ WebRTC peer connection (planned)
-- ⏳ Text chat functionality (planned)
-- ⏳ Audio/video calling (planned)
+### 🛠️ Code Quality Tools
+
+- **Comprehensive Linting**: TypeScript, React, and Next.js rules
+- **Auto-formatting**: Prettier with Tailwind class sorting
+- **Type Checking**: Strict TypeScript configuration
+- **Conventional Commits**: Enforced commit message standards
+- **Pre-commit Hooks**: Quality checks before every commit
 
 ## Documentation
 
-- **[Code Quality Setup](./docs/code-quality.md)** - ESLint, Prettier, Husky configuration
-- **[WebRTC Learning Guide](./docs/webrtc-learning.md)** - WebRTC concepts and implementation plan
-- **[Shadcn/ui Components](./docs/shadcn-ui.md)** - UI component library setup and usage
+- **[Code Quality Setup](./docs/code-quality.md)** - Complete guide to ESLint, Prettier, and development tools
+- **[Shadcn/ui Components](./docs/shadcn-ui.md)** - UI component library setup and usage guide
+
+## Project Structure
+
+```
+├── app/                 # Next.js app directory
+├── components/          # Reusable React components
+│   └── ui/             # Shadcn/ui components
+├── lib/                # Utility functions
+├── docs/               # Documentation
+├── public/             # Static assets
+└── ...config files     # ESLint, TypeScript, Tailwind, etc.
+```
+
+## Getting Started with Development
+
+1. **Clone and Setup**: Follow the installation steps above
+2. **Explore the Code**: Check out the example components and pages
+3. **Add Components**: Use `pnpm dlx shadcn@latest add <component>` to add UI components
+4. **Customize**: Modify the Tailwind theme, add your own components
+5. **Build**: The setup enforces code quality automatically through Git hooks
 
 ## Contributing
 
-This is primarily a learning project, but contributions and suggestions are welcome! Please ensure your code follows the established quality standards by running `pnpm code-quality` before submitting.
+Contributions are welcome! Please ensure your code follows the established quality standards by running `pnpm code-quality` before submitting.
 
 ## License
 
-MIT License - feel free to use this project for learning and experimentation.
+MIT License - feel free to use this template for your projects.
 
 ---
 
-**Note**: This project uses modern web technologies and requires HTTPS for WebRTC functionality in production environments.
+**Perfect for**: New projects, learning modern web development, teams that value code quality and developer experience.

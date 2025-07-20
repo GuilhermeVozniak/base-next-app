@@ -1,6 +1,6 @@
 # Code Quality & Development Setup
 
-This document outlines the comprehensive code quality tools and development setup for the peer-chat project.
+This document outlines the comprehensive code quality tools and development setup for the Next.js project.
 
 ## Available Scripts
 
